@@ -1,0 +1,32 @@
+# 1. Secrets & Environment Variables (CRITICAL)
+.env
+*.env
+.env.local
+
+# 2. Python Virtual Environments & Dependencies
+venv/
+env/
+.venv/
+linkedenv/
+lib/
+lib64/
+
+# 3. Compiled Python Files & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# 4. OS / System Files
+.DS_Store
+Thumbs.db
+
+# 5. Editor & IDE Settings (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.swp
+
+# 6. Logs and Databases
+*.log
+*.sqlite3
