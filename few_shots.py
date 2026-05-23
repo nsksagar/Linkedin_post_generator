@@ -12,14 +12,17 @@ class FewShotPosts:
         self.load_posts()
 
     def load_posts(self):
-
-        with open(self.file_path, encoding = 'utf-8') as f:
-
+        with open(self.file_path, encoding='utf-8') as f:
             posts = json.load(f)
-            self.df = pd.json_normalize(posts)
-            self.df['length'] = self.df['line_count'].apply(self.categorize_length)
-            all_tags = self.df['tags'].apply(lambda x: x).sum()
-            self.unique_tags = set(list(all_tags))
+        
+        # Clean surrogates
+        for post in posts:
+            post['text'] = post['text'].encode('utf-8', 'ignore').decode('utf-8')
+        
+        self.df = pd.json_normalize(posts)
+        self.df['length'] = self.df['line_count'].apply(self.categorize_length)
+        all_tags = self.df['tags'].apply(lambda x: x).sum()
+        self.unique_tags = set(list(all_tags))
 
     
 
